@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 疏影横斜水清浅</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+        
+        :root {
+            --primary-color: #8c4a39;
+            --secondary-color: #a67c52;
+            --bg-color: #f9f2e7;
+            --text-color: #8c4a39;
+            --light-bg: rgba(255, 252, 242, 0.9);
+        }
+        
+    
+        body {
+            background-color: var(--bg-color);
+            background-image: url('678281890.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Ma Shan Zheng', "华文行楷", cursive, serif;
+            color: var(--text-color);
+            margin: 0;
+            padding-top: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+        }
+        
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--light-bg);
+            box-shadow: 0 2px 15px rgba(140, 74, 57, 0.2);
+            border-bottom: 1px solid #d9c7b8;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .login-btn {
+            padding: 8px 25px;
+            background-color: var(--primary-color);
+            color: #f9f2e7;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .login-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* 登录表单样式 */
+        .login-container {
+            background-color: var(--light-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(140, 74, 57, 0.2);
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+            border: 1px solid #d9c7b8;
+        }
+        
+        .login-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d9c7b8;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(166, 124, 82, 0.2);
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: #f9f2e7;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-family: 'Ma Shan Zheng', cursive;
+            letter-spacing: 1px;
+        }
+        
+        .login-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .login-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .login-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .login-links a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 10px;
+            padding: 8px;
+            background: #f8d7da;
+            border-radius: 4px;
+            display: none;
+            border: 1px solid #f5c6cb; /* 可选的边框增强效果 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">疏影横斜水清浅</div>
+        <div class="nav-links">
+            <a href="index.html">文创产品</a>
+            <a href="#">文创故事</a>
+            <a href="#">关于我们</a>
+        </div>
+        <a href="#" class="login-btn">登录</a>
+    </nav>
+    
+    <!-- 登录表单 -->
+    <div class="login-container">
+        <h2 class="login-title">用户登录</h2>
+        <form id="loginForm" action="/login" method="post">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" name="username" required placeholder="请输入用户名">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" required placeholder="请输入密码">
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+            <button type="submit" class="login-button">登 录</button>
+            <div class="login-links">
+                <a href="#">忘记密码?</a>
+                <a href="/register">注册新账号</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const errorElement = document.getElementById('errorMessage');
+            
+            // 清空旧提示
+            errorElement.style.display = 'none';
+            
+            // 前端验证
+            if (!formData.get('username') || !formData.get('password')) {
+                errorElement.textContent = '用户名和密码不能为空';
+                errorElement.style.display = 'block';
+                return;
+            }
+        
+            // 发送请求
+            fetch('/login', {
+                method: 'POST',
+                body: new URLSearchParams(formData),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(response => {
+                if (response.redirected) {  // 处理重定向
+                    window.location.href = response.url;
+                    return;
+                }
+                return response.text();
+            })
+            .then(text => {
+                if (text === '密码错误') {
+                    errorElement.textContent = text;
+                    errorElement.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorElement.textContent = '登录过程中发生错误';
+                errorElement.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

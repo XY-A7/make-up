@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>疏影横斜水清浅 - 文创产品</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+        
+        :root {
+            --primary-color: #8c4a39;
+            --secondary-color: #a67c52;
+            --bg-color: #f9f2e7;
+            --text-color: #8c4a39;
+            --light-bg: rgba(255, 252, 242, 0.9);
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            background-image: url('678281890.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Ma Shan Zheng', "华文行楷", cursive, serif;
+            color: var(--text-color);
+            margin: 0;
+            padding-top: 80px;
+        }
+        
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--light-bg);
+            box-shadow: 0 2px 15px rgba(140, 74, 57, 0.2);
+            border-bottom: 1px solid #d9c7b8;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .login-btn {
+            padding: 8px 25px;
+            background-color: var(--primary-color);
+            color: #f9f2e7;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .login-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* 主要内容区域 */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            letter-spacing: 4px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 15px auto;
+            opacity: 0.6;
+        }
+        
+        /* 产品展示 */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .product-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(140, 74, 57, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #d9c7b8;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(140, 74, 57, 0.2);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-desc {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .buy-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 25px;
+            background-color: var(--primary-color);
+            color: #f9f2e7;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .buy-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: rgba(140, 74, 57, 0.8);
+            color: #f9f2e7;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: #f9f2e7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #d9c7b8;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">疏影横斜水清浅</div>
+        <div class="nav-links">
+            <a href="#">文创产品</a>
+            <a href="#">文创故事</a>
+            <a href="#">关于我们</a>
+        </div>
+        <a href="login.html" class="login-btn">登录</a>
+    </nav>
+    
+    <!-- 主要内容 -->
+    <div class="main-container">
+        <h2 class="section-title">文 创 产 品</h2>
+        
+        <div class="products">
+            <!-- 产品1 - 水墨丹青眉笔 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="古典眉笔">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">水墨丹青眉笔</h3>
+                    <p class="product-desc">灵感源自宋代山水画，笔触细腻如墨，勾勒东方古典眉形</p>
+                    <div class="product-price">¥128</div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+            </div>
+            
+            <!-- 产品2 - 朱砂点绛唇膏 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="口红.jpg" alt="朱砂点绛唇膏" style="width:300px;">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">朱砂点绛唇膏</h3>
+                    <p class="product-desc">取法古代胭脂工艺，色彩如朱砂点染，蕴含牡丹精华</p>
+                    <div class="product-price">¥168</div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+            </div>
+            
+            <!-- 产品3 - 梅香暗浮动香薰 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://img.zcool.cn/community/01a0a75d1560f1a8012187f4a9d4a4.jpg@1280w_1l_2o_100sh.jpg" alt="香薰">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">梅香暗浮动香薰</h3>
+                    <p class="product-desc">还原"疏影横斜水清浅，暗香浮动月黄昏"的意境香调</p>
+                    <div class="product-price">¥198</div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+            </div>
+            
+            <!-- 产品4 - 花间词令书签 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://img.zcool.cn/community/01e8b35d1560f1a8012187f4d8d8a4.jpg@1280w_1l_2o_100sh.jpg" alt="书签">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">花间词令书签</h3>
+                    <p class="product-desc">纯铜打造，镌刻宋代婉约词句，伴您阅读时光</p>
+                    <div class="product-price">¥88</div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+            </div>
+            
+            <!-- 产品5 - 青瓷听雨茶具 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://img.zcool.cn/community/01f7e75d1560f1a8012187f4f9f8a4.jpg@1280w_1l_2o_100sh.jpg" alt="茶具">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">青瓷听雨茶具</h3>
+                    <p class="product-desc">仿宋青瓷工艺，釉色如雨过天青，包含一壶四杯</p>
+                    <div class="product-price">¥398</div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+            </div>
+            
+            <!-- 产品6 - 水墨江南丝巾 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://img.zcool.cn/community/01c8c75d1560f1a8012187f4e8d8a4.jpg@1280w_1l_2o_100sh.jpg" alt="丝巾">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">水墨江南丝巾</h3>
+                    <p class="product-desc">真丝材质，手绘江南水乡图案，四季皆宜的典雅配饰</p>
+                    <div class="product-price">¥258</div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">疏影横斜水清浅</div>
+            <div class="footer-links">
+                <a href="#">联系我们</a>
+                <a href="#">隐私政策</a>
+                <a href="#">配送信息</a>
+                <a href="#">售后服务</a>
+            </div>
+            <div class="copyright">© 2025 疏影横斜文创工作室 版权所有</div>
+        </div>
+    </footer>
+</body>
+</html>
